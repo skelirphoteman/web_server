@@ -1,0 +1,57 @@
+version: '3'
+
+networks:
+  network:
+services:
+  php-test:
+    build:
+      context: ./php/
+      dockerfile: Dockerfile
+    container_name: php-test
+    networks:
+      - network
+    volumes:
+      - $PWD/www/:/var/www/
+    depends_on:
+      - mysql
+  nginx:
+    image: nginx
+    container_name: nginx-test
+    networks:
+      - network
+    volumes:
+      - $PWD/nginx/:/etc/nginx/conf.d/
+      - $PWD/www/:/var/www/
+    ports:
+      - '8888:80'
+    depends_on:
+      - php-test
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    env_file: .env
+    command:
+      - "--default-authentication-plugin=mysql_native_password"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - $PWD/mysql/:/var/lib/mysql/
+    networks:
+      - network
+  composer:
+    image: composer
+    container_name: php-composer-test
+    volumes:
+      - $PWD/www/:/var/www/
+    tty: true
+    command: ['/bin/bash']
+    networks:
+      - network
+    working_dir: /var/www/
+    depends_on:
+      - php-test
