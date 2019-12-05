@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<style type="text/css">
+		body{
+			background-color: #AED6F1;
+		}
+		.card-presentation
+		{
+			border: solid;
+			border-width: 1px;
+			border-radius: 10px;
+			background-color: #2C3E50;
+			color: #F4D03F;
+			margin: 5px;
+		}
+		.card-content
+		{
+			margin-top: 2%;
+			margin-bottom: 2%;
+
+		}
+		.card-content img
+		{
+			width: 150px;
+			height: 200px;
+			border: solid;
+			border-width: 1px;
+			border-radius: 22px;
+			border-color: #F4D03F;
+		}
+		.card-image
+		{
+			text-align: center;
+		}
+		.player-fiche
+		{
+			position: absolute;
+			bottom: 0px;
+			right: 5%;
+
+		}
+		.card-go
+		{
+			left: 5px;	
+		}
+	</style>
+</head>
+<body>
+		<div class="content-search">
+			<div class="container-fluid">
+				<div class="row" id="group-sport-player">
+					<div class="col-12 col-sm-6 col-lg-4">
+						<div class="card-presentation">
+							<div class="container-fluid card-content">
+								<div class="row">
+									<div class="col-12 col-sm-6 card-image">
+										<img src="http://localhost:8888/uploads/images/40912896_1124009637749979_3506573560023875584_o-5daed4b3cfc75.jpeg">
+									</div>
+									<div class="col-12 col-sm-6 card-go">
+										<h4>Galoin Julien</h4>
+									
+									
+										<div class="player-fiche">
+											<a href="#"  class="player-fiche btn btn-outline-warning">Fiche Joueur</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+	<div class="container-fluid"><div class="row" id="">
+		<div class="col-12 col-sm-6 col-lg-4" id="group-sport-player">
+	</div></div>
+		<script>
+		
+		window.onload = function(){
+			function drawSportPlayer()
+			{
+
+				window.sportPlayers.forEach(function(sportplayer){
+					/*
+					var newText = document.createElement('p');
+					newText.innerHTML = sportplayer['name'] + " <br> " + sportplayer['surname']
+
+
+
+					var newDiv = document.createElement('div'); // div principal
+					newDiv.className = 'col-12 col-sm-6';
+
+					var divContainer = document.createElement('div'); // div Container
+					divContainer.className = 'container';
+					var divRow = document.createElement('div'); // div Row
+					divRow.className = 'row';
+
+					var card = document.createElement('div');
+					card.className = "card";
+
+
+
+					var imgSportPlayer = document.createElement('img'); // image du joueur
+					if(sportplayer['image_filename']){
+						imgSportPlayer.src = "http://localhost:8888/uploads/images/" + sportplayer['image_filename'];
+						imgSportPlayer.width = "100";
+						imgSportPlayer.height = "100";
+					}else{
+						imgSportPlayer.src = "";
+					}
+					imgSportPlayer.className = "col-12 col-sm-6";
+
+
+					card.appendChild(imgSportPlayer);
+					card.appendChild(newText);
+					divRow.appendChild(card);
+					divContainer.appendChild(divRow);
+					newDiv.appendChild(divContainer);
+					var currentDiv = document.getElementById('group-sport-player');
+  					currentDiv.appendChild(newDiv);*/
+  					var newText = document.createElement('div');
+  					newText.className = "col-12 col-sm-6 col-lg-4";
+ 
+  					newText.innerHTML = '<div class="card-presentation"><div class="container-fluid card-content"><div class="row"><div class="col-12 col-sm-6 card-image"><img src="http://localhost:8888/uploads/images/' + sportplayer["image_filename"] + '"></div><div class="col-12 col-sm-6 card-go"><h4>' + sportplayer["surname"] + ' ' + sportplayer["name"] + '</h4><div class="player-fiche"><a href="#"  class="player-fiche btn btn-outline-warning">Fiche Joueur</a></div></div></div></div></div></div></div>';
+  					var currentDiv = document.getElementById('group-sport-player');
+  					currentDiv.appendChild(newText);
+				});
+			}
+
+			var getJSON = function(url, callback) {
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('GET', url, true);
+			    xhr.responseType = 'json';
+			    xhr.onload = function() {
+			      var status = xhr.status;
+			      if (status === 200) {
+			        callback(null, xhr.response);
+			      } else {
+			        callback(status, xhr.response);
+			      }
+			    };
+			    xhr.send();
+			};
+			getJSON("http://localhost:8888/garrincha/api/listPlayer/web/",
+			function(err, data) {
+			  if (err !== null) {
+			    window.sportPlayers = data;
+			  } else {
+			  	console.log(data);
+			  	window.sportPlayers = data;
+			  	drawSportPlayer();
+			  }
+			});
+		};
+		</script>
+</body>
+</html>

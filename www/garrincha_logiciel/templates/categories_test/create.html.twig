@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	{{ form_start(create_category_test) }}
+	    {{ form_errors(create_category_test) }}
+	    
+	    {{ form_row(create_category_test.name) }}
+	    {{ form_row(create_category_test._at) }}
+
+	    {{ form_row(create_category_test.create) }}
+	{{ form_end(create_category_test) }}
+{% endblock %}

@@ -1,34 +1,34 @@
 version: '3'
 
 networks:
-  network:
+  garrincha-logiciel:
 services:
-  php-test:
+  php:
     build:
       context: ./php/
       dockerfile: Dockerfile
-    container_name: php-test
+    container_name: php-garrincha
     networks:
-      - network
+      - garrincha-logiciel
     volumes:
       - $PWD/www/:/var/www/
     depends_on:
       - mysql
   nginx:
     image: nginx
-    container_name: nginx-test
+    container_name: nginx-garrincha
     networks:
-      - network
+      - garrincha-logiciel
     volumes:
       - $PWD/nginx/:/etc/nginx/conf.d/
       - $PWD/www/:/var/www/
     ports:
       - '8888:80'
     depends_on:
-      - php-test
+      - php
   mysql:
     image: mysql
-    container_name: mysql
+    container_name: mysql-garrincha
     ports:
       - '3306:3306'
     env_file: .env
@@ -42,16 +42,16 @@ services:
     volumes:
       - $PWD/mysql/:/var/lib/mysql/
     networks:
-      - network
+      - garrincha-logiciel
   composer:
     image: composer
-    container_name: php-composer-test
+    container_name: php-composer-garrincha
     volumes:
       - $PWD/www/:/var/www/
     tty: true
     command: ['/bin/bash']
     networks:
-      - network
+      - garrincha-logiciel   
     working_dir: /var/www/
     depends_on:
-      - php-test
+      - php

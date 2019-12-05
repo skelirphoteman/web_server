@@ -1,0 +1,66 @@
+25/09/19: 
+	- installation symfony
+	- configuration doctrine
+	bug connection doctrine
+26/09/19:
+	- configuration doctrine (bug native password myslq 8 fixed)
+	- creation database "garrincha"
+	- generation entity "SportPlayer" pour les joueur
+	- doctrine migration
+	- creation controller sportPlayerController pour gerer la creation et list du joueur
+	- creation controller CoreController pour la page d'acceuille
+	- Form SportPlayerType et creation route dans sportPlayerCOntroller pour creer joueur
+	- template create.html.twig
+	- Creation roure dans SportPlayerController pour list joueurs
+	- template list.html.twig 
+27/09/19:
+	- Enity PhysicalTest
+	- generation entity
+	- creation controller PhysicalTestController
+	- Route "create-physical-test"
+	- twig 
+	- Form PhysicalTestType ok
+	- entity ValuePhysicalTest
+	- generation
+28/09/19:
+	- entity CategoriesTest
+	- generation entity
+	- generation CategoriesTestType
+	- generation CategoriesTestController
+	- Creation route create Categories
+	- make:form ValuePhysicalTestType
+	- make:controller ValuePhysicalTestController
+		note: finir test -> form valuePhysicalTestType
+29/09/19:
+	- maj css => base.html.twig with bootstrap
+	- navbar
+		note: a finir presentation home page
+				form valuePhysicalTestType
+30/09/19:
+	- finition valuePhysicalTestType
+	- Liaison ok
+	- css maj au niveau du nav
+	- rentrer 2 valeur 
+	- chart.js charger
+01/09/19:
+	- creation requete json par url
+	- get valeur en json
+	- chart js mis en place pour categories
+	- renter des valeur jongle tete/droit/gauche
+	- page categories avec table de toutes les categories
+	- page pour supprimer valeur
+	- maj css pour les tables
+01 -> 22/09/19:
+	(Oublié de faire le rapport)
+	- Creation d'un page pour modifier les membre
+	- Generation Entity Media
+	- Ajout Media
+	- requete json joueur autoriser avec (id, nom, prenom, image)
+	- Moteur d'upload
+	- Lier Media et SportPlayer OneToOne 
+		A faire : Creation Caracteristics : 
+			{
+				[team, level, poste; strong_foot, weight, size]
+			}
+22 -> 31/11/19
+	- Finition affichage pour garrincha.com

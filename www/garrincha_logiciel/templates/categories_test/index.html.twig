@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoriesTestControllerCategoriesTestController!{% endblock %}
+
+{% block body %}
+{% if categories[0] is defined%}
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">id</th>
+	      <th scope="col">nom</th>
+	      <th scope="col">date</th>
+	      <th scope="col">voir statistiques</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	{% for i in 0..(categories|length - 1) %}
+		<tr>
+	      <td>{{categories[i].getId}}</td>
+	      <td>{{categories[i].getName}}</td>
+	      <td>{{categories[i].getAt|date("d/m/Y")}}</td>
+	      <td><a href="{{ path('stats-categories', {'id': categories[i].getId}) }}" >Voir</a></td>
+	    </tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+	domamge 
+{% endif %}
+{% endblock %}

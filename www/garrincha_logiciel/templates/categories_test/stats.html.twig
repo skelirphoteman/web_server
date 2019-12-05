@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhysicalTestController!{% endblock %}
+{% block stylesheets %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+{% endblock %}
+{% block body %}
+{% if values[0] is defined%}
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Nom</th>
+	      <th scope="col">Prénom</th>
+	      <th scope="col">Valeur</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	{% for i in 0..(values|length - 1) %}
+		<tr>
+	      <td>{{values[i].getSportPlayer.getName}}</td>
+	      <td>{{values[i].getSportPlayer.getSurname}}</td>
+	      <td>{{values[i].getValue}}</td>
+	    </tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+	domamge 
+{% endif %}
+
+
+<div class="text-center">
+<canvas id="ctx" width="1000" height="350"></canvas>
+</div>
+<script>
+
+	function graphique(){
+		var myLineChart = new Chart(ctx, {
+		    type: 'line',
+		    data: {
+		    		labels: window.length[1],
+		    		datasets : [{
+		    			label : '{{ categorie_name }}',
+		    			backgroundColor: 'rgba(0,0,250, 0.5)',
+		    			borderColor: 'rgb(50, 50,250)',
+		    			data: window.length[0]
+		    		}]
+		    	}
+		});
+	}
+	window.onload = function(){
+		var getJSON = function(url, callback) {
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('GET', url, true);
+		    xhr.responseType = 'json';
+		    xhr.onload = function() {
+		      var status = xhr.status;
+		      if (status === 200) {
+		        callback(null, xhr.response);
+		      } else {
+		        callback(status, xhr.response);
+		      }
+		    };
+		    xhr.send();
+		};
+		getJSON("http://localhost:8888{{ path('get-stats-json', { 'id': id}) }}",
+		function(err, data) {
+		  if (err !== null) {
+		    window.length = data;
+		  } else {
+		  	console.log(data);
+		  	window.length = data;
+		  	graphique();
+		  }
+		});
+};
+
+
+
+</script>
+{% endblock %}

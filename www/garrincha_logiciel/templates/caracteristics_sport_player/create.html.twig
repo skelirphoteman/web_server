@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+{% block body %}
+	{{ form_start(create_caracteristics) }}
+	    {{ form_errors(create_caracteristics) }}
+	    
+	    {{ form_row(create_caracteristics.team) }}
+	    {{ form_row(create_caracteristics.level) }}
+	    {{ form_row(create_caracteristics.position) }}
+	    {{ form_row(create_caracteristics.strong_foot) }}
+	    {{ form_row(create_caracteristics.weight) }}
+	    {{ form_row(create_caracteristics.size) }}
+	    {{ form_row(create_caracteristics.sportPlayer) }}
+
+	    {{ form_row(create_caracteristics.submit) }}
+	{{ form_end(create_caracteristics) }}
+{% endblock %}

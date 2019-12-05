@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhysicalTestController!{% endblock %}
+{% block body %}
+
+{{ form_start(create_value) }}
+    {{ form_errors(create_value) }}
+
+    {{ form_row(create_value.value) }}
+    {{ form_row(create_value._at) }}
+    {{ form_row(create_value.options) }}
+    {{ form_row(create_value.sport_player) }}
+    {{ form_row(create_value.categoriesTest) }}
+    {{ form_row(create_value.physical_test) }}
+
+{{ form_end(create_value) }}
+
+{% endblock %}

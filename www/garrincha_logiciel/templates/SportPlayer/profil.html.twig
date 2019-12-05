@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhysicalTestController!{% endblock %}
+{% block body %}
+{% if sport_player[0] is defined%}
+
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">id</th>
+	      <th scope="col">Nom</th>
+	      <th scope="col">Prénom</th>
+	      <th scope="col">Valeur</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	{% for i in 0..(sport_player.getValues|length - 1) %}
+		<tr>
+	      <td>{{sport_player[i].getValues.getId}}</td>
+	      <td>{{sport_player[i].getValues.getValue}}</td>
+	      <td><a href="{{path('profil-sport-player', {'id': sport_player[i].getId})}}">voir profil</a></td>
+	    </tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+	not found 
+{% endif%}
+
+{% endblock%}

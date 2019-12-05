@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PhysicalTestController!{% endblock %}
+{% block body %}
+	{{ form_start(create_physical_test) }}
+	    {{ form_errors(create_physical_test) }}
+	    
+	    {{ form_row(create_physical_test.name) }}
+	    {{ form_row(create_physical_test.unity) }}
+
+	    {{ form_row(create_physical_test.create) }}
+	{{ form_end(create_physical_test) }}
+{% endblock %}
