@@ -22,3 +22,6 @@ Pour finir lancer un `docker-compose up --build` pour charger les fichier necess
 
 Voila ! Vous avez maintenant un espace de travaille pour vos projet php/mysql. Situez vos projet dans le dossier 'www/' .
 Rendez-vous sur `localhost:8888` pour visualisé vos pages (On utilise le port 8888); 
+
+
+Pour plus de conseilles, news ou tuto : https://skelirscreation.fr/
